@@ -129,12 +129,12 @@ document.getElementById('profileForm').addEventListener('submit', async (e) => {
   const picFile = document.getElementById('profilePicInput').files[0];
 
   await saveProfileData({
-    name: name || current.name || 'صارف کا نام',
+    name: name || current.name || 'Student Name',
     picBlob: picFile || current.picBlob || null
   });
 
   await loadHeaderProfile();
-  alert('✅ پروفائل محفوظ ہو گئی!');
+  alert('Profile saved!');
   openView('savedView');
 });
 
@@ -181,7 +181,7 @@ document.getElementById('addEntryForm').addEventListener('submit', async (e) => 
   });
 
   e.target.reset();
-  alert('✅ فون میں آف لائن محفوظ ہو گیا!');
+  alert('Saved offline on your device!');
   openView('savedView');
 });
 
@@ -211,7 +211,7 @@ async function renderSavedList() {
   });
 
   if (!items.length) {
-    box.innerHTML = `<div class="entry-card" style="text-align:center;color:#64748b;">ابھی یہاں کوئی آئٹم محفوظ نہیں ہے۔</div>`;
+    box.innerHTML = `<div class="entry-card" style="text-align:center;color:#64748b;">No saved items found yet.</div>`;
     return;
   }
 
@@ -222,7 +222,7 @@ async function renderSavedList() {
 
     let extra = '';
     if (item.category === 'links' && item.url) {
-      extra += `<a href="${item.url}" target="_blank" rel="noopener" class="entry-link" dir="ltr">${item.url}</a>`;
+      extra += `<a href="${item.url}" target="_blank" rel="noopener" class="entry-link">${item.url}</a>`;
     }
     if (item.category === 'schedule') {
       extra += `<div style="font-size:0.84rem;color:#0d9488;margin-bottom:6px;">🗓️ ${item.calType.toUpperCase()} | ${item.calDay} | ${item.calDate || ''} ⏰ ${item.calTime || ''}</div>`;
@@ -244,7 +244,7 @@ async function renderSavedList() {
       ${extra}
       ${item.body ? `<div class="entry-body">${item.body}</div>` : ''}
       <div class="entry-footer-row">
-        <button class="del-small" onclick="deleteSaved(${item.id})">حذف کریں</button>
+        <button class="del-small" onclick="deleteSaved(${item.id})">Delete</button>
       </div>
     `;
     box.appendChild(card);
@@ -252,7 +252,7 @@ async function renderSavedList() {
 }
 
 window.deleteSaved = async (id) => {
-  if (confirm('کیا آپ اسے حذف کرنا چاہتے ہیں؟')) {
+  if (confirm('Are you sure you want to delete this item?')) {
     await removeEntryById(id);
     renderSavedList();
     renderCalendarList();
@@ -275,7 +275,7 @@ async function renderCalendarList() {
   const rows = all.filter(i => i.category === 'schedule' && i.calType === activeCalMode);
 
   if (!rows.length) {
-    box.innerHTML = `<div class="entry-card" style="text-align:center;color:#64748b;">اس کیلینڈر میں ابھی کوئی ٹائم ٹیبل سیٹ نہیں ہے۔</div>`;
+    box.innerHTML = `<div class="entry-card" style="text-align:center;color:#64748b;">No timetable entries set for this view yet.</div>`;
     return;
   }
 
@@ -286,7 +286,7 @@ async function renderCalendarList() {
         <span class="entry-title">⏰ ${r.calTime || '--:--'} — ${r.title}</span>
         <span class="entry-cat">${r.calDay}</span>
       </div>
-      <div style="font-size:0.84rem;color:#0d9488;">تاریخ: ${r.calDate || 'مقررہ وقت'}</div>
+      <div style="font-size:0.84rem;color:#0d9488;">Date: ${r.calDate || 'Scheduled Time'}</div>
       ${r.body ? `<div class="entry-body">${r.body}</div>` : ''}
     </div>
   `).join('');
@@ -304,7 +304,7 @@ setInterval(async () => {
     const all = await fetchAllEntries();
     all.filter(i => i.category === 'schedule' && i.calTime === currentHM).forEach(task => {
       if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification(`⏰ ${task.title}`, { body: task.body || 'آپ کے ٹائم ٹیبل کا وقت ہو گیا ہے۔' });
+        new Notification(`⏰ ${task.title}`, { body: task.body || 'It is time for your scheduled activity.' });
       }
     });
   }
@@ -312,9 +312,9 @@ setInterval(async () => {
 
 // Settings Actions
 document.getElementById('notifPermBtn').addEventListener('click', async () => {
-  if (!('Notification' in window)) return alert('اس براؤزر میں نوٹیفکیشن دستیاب نہیں۔');
+  if (!('Notification' in window)) return alert('Notifications are not supported in this browser.');
   const p = await Notification.requestPermission();
-  alert(p === 'granted' ? '✅ نوٹیفکیشن آن ہو گئے!' : '❌ اجازت نہیں دی گئی۔');
+  alert(p === 'granted' ? 'Notifications enabled!' : 'Notification permission was not granted.');
 });
 
 document.getElementById('exportJsonBtn').addEventListener('click', async () => {
@@ -337,14 +337,14 @@ document.getElementById('importJsonFile').addEventListener('change', (e) => {
       delete item.id;
       await insertEntry(item);
     }
-    alert('✅ بیک اپ ری اسٹور ہو گیا!');
+    alert('Backup restored!');
     renderSavedList();
   };
   reader.readAsText(file);
 });
 
 document.getElementById('wipeDbBtn').addEventListener('click', () => {
-  if (confirm('کیا آپ واقعی تمام آف لائن ڈیٹا حذف کرنا چاہتے ہیں؟')) {
+  if (confirm('Are you sure you want to delete all offline data?')) {
     indexedDB.deleteDatabase(DB_NAME);
     location.reload();
   }
