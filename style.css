@@ -16,10 +16,10 @@
 }
 
 body {
-  font-family: 'Poppins', 'Noto Nastaliq Urdu', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.85;
+  line-height: 1.6;
 }
 
 /* 3-Second Splash Animation #1 (Zoom & Glow) */
@@ -320,7 +320,7 @@ body {
 }
 
 .entry-card {
-  border-right: 4px solid var(--emerald);
+  border-left: 4px solid var(--emerald);
 }
 
 .entry-top {
