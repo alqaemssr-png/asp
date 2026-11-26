@@ -1,0 +1,17 @@
+{
+  "name": "Alqaem Students Planner",
+  "short_name": "Alqaem Planner",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a192f",
+  "theme_color": "#0a192f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
