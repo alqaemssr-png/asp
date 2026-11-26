@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
   <title>Alqaem Students Planner</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
         </svg>
       </div>
       <h2 class="splash-title">Alqaem Students Planner</h2>
-      <p class="splash-tagline">آف لائن ٹائم ٹیبل، نوٹس و ریمائنڈرز</p>
+      <p class="splash-tagline">Offline Timetable, Notes & Reminders</p>
     </div>
   </div>
 
@@ -35,14 +35,14 @@
 
     <!-- Top Header: Left Pic | Center Person Name & Tagline | Right Logo #1 -->
     <header class="top-header">
-      <div class="header-pic-wrap" onclick="openView('profileView')" title="پروفائل تبدیل کریں">
-        <img id="headerProfilePic" src="" alt="Pic" class="header-pic hidden" />
+      <div class="header-pic-wrap" onclick="openView('profileView')" title="Update Profile">
+        <img id="headerProfilePic" src="" alt="Profile" class="header-pic hidden" />
         <span id="headerPicFallback" class="pic-fallback">👤</span>
       </div>
 
       <div class="header-identity">
-        <div id="headerPersonName" class="person-name">صارف کا نام</div>
-        <div id="headerTagline" class="app-tagline">Alqaem Students Planner • آف لائن ٹائم ٹیبل و نوٹس</div>
+        <div id="headerPersonName" class="person-name">Student Name</div>
+        <div id="headerTagline" class="app-tagline">Alqaem Students Planner • Offline Timetable & Notes</div>
       </div>
 
       <div class="header-logo" title="Alqaem Students Planner">
@@ -62,34 +62,34 @@
       <!-- VIEW 1: SAVED (Default Open) -->
       <section id="savedView" class="view active">
         <div class="section-banner">
-          <span>محفوظ شدہ مواد (Saved)</span>
-          <button id="installAppBtn" class="install-chip hidden">📲 انسٹال کریں</button>
+          <span>Saved Items</span>
+          <button id="installAppBtn" class="install-chip hidden">📲 Install App</button>
         </div>
 
         <div class="category-pills" id="savedCategoryPills">
-          <button class="pill active" data-cat="all">سب</button>
-          <button class="pill" data-cat="notes">تحریریں</button>
-          <button class="pill" data-cat="links">لنکس</button>
-          <button class="pill" data-cat="images">تصاویر</button>
-          <button class="pill" data-cat="videos">ویڈیوز</button>
-          <button class="pill" data-cat="schedule">ٹائم ٹیبل</button>
+          <button class="pill active" data-cat="all">All</button>
+          <button class="pill" data-cat="notes">Notes</button>
+          <button class="pill" data-cat="links">Links</button>
+          <button class="pill" data-cat="images">Images</button>
+          <button class="pill" data-cat="videos">Videos</button>
+          <button class="pill" data-cat="schedule">Timetable</button>
         </div>
 
-        <input type="text" id="searchSaved" class="search-input" placeholder="ٹائٹل یا تحریر تلاش کریں..." />
+        <input type="text" id="searchSaved" class="search-input" placeholder="Search by title or note content..." />
         <div id="savedContainer" class="card-list"></div>
       </section>
 
       <!-- VIEW 2: CALENDAR (Daily Hourly, Weekly, Monthly, Annual) -->
       <section id="calendarView" class="view">
         <div class="section-banner">
-          <span>کیلینڈر و ٹائم ٹیبل</span>
+          <span>Calendar & Timetable</span>
         </div>
 
         <div class="category-pills" id="calModePills">
-          <button class="pill active" data-cal="daily">ڈیلی (گھنٹے)</button>
-          <button class="pill" data-cal="weekly">ویکلی</button>
-          <button class="pill" data-cal="monthly">منتھلی</button>
-          <button class="pill" data-cal="annual">اینول</button>
+          <button class="pill active" data-cal="daily">Daily (Hourly)</button>
+          <button class="pill" data-cal="weekly">Weekly</button>
+          <button class="pill" data-cal="monthly">Monthly</button>
+          <button class="pill" data-cal="annual">Annual</button>
         </div>
 
         <div id="calendarContainer" class="card-list"></div>
@@ -98,116 +98,116 @@
       <!-- VIEW 3: ADD NEW (Categories -> Title -> Content/File) -->
       <section id="addView" class="view">
         <div class="section-banner">
-          <span>نئی چیز شامل کریں (Add New)</span>
+          <span>Add New</span>
         </div>
 
-        <p class="hint-text">کیٹگری منتخب کریں، پھر ٹائٹل اور نیچے تحریر، لنک، تصویر یا ویڈیو شامل کریں:</p>
+        <p class="hint-text">Select a category, enter a title, and add notes, links, images, videos, or timetable reminders:</p>
         <div class="category-pills" id="addCategoryPills">
-          <button class="pill active" data-addcat="notes">📝 تحریر (اردو/انگلش)</button>
-          <button class="pill" data-addcat="links">🔗 لنک</button>
-          <button class="pill" data-addcat="images">🖼️ تصویر</button>
-          <button class="pill" data-addcat="videos">🎬 ویڈیو</button>
-          <button class="pill" data-addcat="schedule">⏰ ٹائم ٹیبل / ریمائنڈر</button>
+          <button class="pill active" data-addcat="notes">📝 Note</button>
+          <button class="pill" data-addcat="links">🔗 Link</button>
+          <button class="pill" data-addcat="images">🖼️ Image</button>
+          <button class="pill" data-addcat="videos">🎬 Video</button>
+          <button class="pill" data-addcat="schedule">⏰ Timetable / Reminder</button>
         </div>
 
         <form id="addEntryForm" class="form-box">
-          <label for="itemTitle">ٹائٹل *</label>
-          <input type="text" id="itemTitle" required placeholder="یہاں عنوان / ٹائٹل لکھیں..." />
+          <label for="itemTitle">Title *</label>
+          <input type="text" id="itemTitle" required placeholder="Enter title..." />
 
           <div id="linkBox" class="extra-box hidden">
-            <label for="itemUrl">لنک (URL)</label>
-            <input type="url" id="itemUrl" dir="ltr" placeholder="https://example.com" />
+            <label for="itemUrl">Link (URL)</label>
+            <input type="url" id="itemUrl" placeholder="https://example.com" />
           </div>
 
           <div id="mediaBox" class="extra-box hidden">
-            <label for="itemFile">فائل منتخب کریں (فون میں آف لائن محفوظ ہوگی)</label>
+            <label for="itemFile">Select File (Saved offline on device)</label>
             <input type="file" id="itemFile" />
           </div>
 
           <div id="scheduleBox" class="extra-box hidden">
-            <label for="calType">کیلینڈر کی قسم</label>
+            <label for="calType">Calendar View</label>
             <select id="calType">
-              <option value="daily">ڈیلی (گھنٹوں کے حساب سے - Hourly)</option>
-              <option value="weekly">ویکلی (ہفتہ وار)</option>
-              <option value="monthly">منتھلی (ماہانہ)</option>
-              <option value="annual">اینول (سالانہ)</option>
+              <option value="daily">Daily (Hourly)</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="annual">Annual</option>
             </select>
 
             <div class="grid-2">
               <div>
-                <label for="calDate">تاریخ</label>
+                <label for="calDate">Date</label>
                 <input type="date" id="calDate" />
               </div>
               <div>
-                <label for="calTime">وقت / گھنٹہ</label>
+                <label for="calTime">Time / Hour</label>
                 <input type="time" id="calTime" />
               </div>
             </div>
 
-            <label for="calDay">دن (ویکلی کے لیے)</label>
+            <label for="calDay">Day (For Weekly)</label>
             <select id="calDay">
-              <option value="روزانہ">روزانہ</option>
-              <option value="پیر">پیر</option>
-              <option value="منگل">منگل</option>
-              <option value="بدھ">بدھ</option>
-              <option value="جمعرات">جمعرات</option>
-              <option value="جمعہ">جمعہ</option>
-              <option value="ہفتہ">ہفتہ</option>
-              <option value="اتوار">اتوار</option>
+              <option value="Daily">Daily</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
             </select>
           </div>
 
-          <label for="itemBody">تحریر / تفصیل (اردو یا انگلش)</label>
-          <textarea id="itemBody" rows="5" placeholder="یہاں اپنی تحریر یا تفصیل لکھیں..."></textarea>
+          <label for="itemBody">Notes / Details</label>
+          <textarea id="itemBody" rows="5" placeholder="Write your notes or details here..."></textarea>
 
-          <button type="submit" class="btn-primary">💾 فون میں محفوظ کریں</button>
+          <button type="submit" class="btn-primary">💾 Save Offline</button>
         </form>
       </section>
 
       <!-- VIEW 4: SETTINGS -->
       <section id="settingsView" class="view">
         <div class="section-banner">
-          <span>سیٹنگز (Settings)</span>
+          <span>Settings</span>
         </div>
 
         <div class="settings-box">
-          <h3>🔔 ریمائنڈر نوٹیفکیشن</h3>
-          <p>مقررہ وقت پر الرٹ حاصل کرنے کے لیے نوٹیفکیشن اجازت آن کریں۔</p>
-          <button id="notifPermBtn" class="btn-secondary">نوٹیفکیشن فعال کریں</button>
+          <h3>🔔 Reminder Notifications</h3>
+          <p>Enable browser notifications to get alerts at your scheduled timetable times.</p>
+          <button id="notifPermBtn" class="btn-secondary">Enable Notifications</button>
         </div>
 
         <div class="settings-box">
-          <h3>📦 آف لائن بیک اپ (JSON)</h3>
-          <p>اپنے محفوظ شدہ ڈیٹا کا بیک اپ ڈاؤن لوڈ یا ری اسٹور کریں۔</p>
+          <h3>📦 Offline Backup (JSON)</h3>
+          <p>Export a backup file of your saved entries or restore from a previous backup.</p>
           <div class="grid-2">
-            <button id="exportJsonBtn" class="btn-secondary">⬇️ بیک اپ ڈاؤن لوڈ</button>
+            <button id="exportJsonBtn" class="btn-secondary">⬇️ Export Backup</button>
             <label class="btn-secondary upload-label">
-              ⬆️ بیک اپ ری اسٹور
+              ⬆️ Restore Backup
               <input type="file" id="importJsonFile" accept=".json" hidden />
             </label>
           </div>
         </div>
 
         <div class="settings-box">
-          <h3>🧹 لوکل اسٹوریج</h3>
-          <button id="wipeDbBtn" class="btn-danger">تمام آف لائن ڈیٹا حذف کریں</button>
+          <h3>🧹 Local Storage</h3>
+          <button id="wipeDbBtn" class="btn-danger">Clear All Offline Data</button>
         </div>
       </section>
 
       <!-- VIEW 5: PROFILE (User sets their own Name & Pic) -->
       <section id="profileView" class="view">
         <div class="section-banner">
-          <span>پروفائل (Profile)</span>
+          <span>Profile</span>
         </div>
 
         <form id="profileForm" class="form-box">
-          <label for="profileNameInput">آپ کا نام</label>
-          <input type="text" id="profileNameInput" placeholder="اپنا نام لکھیں..." />
+          <label for="profileNameInput">Your Name</label>
+          <input type="text" id="profileNameInput" placeholder="Enter your name..." />
 
-          <label for="profilePicInput">اپنی پروفائل تصویر (فون سے منتخب کریں)</label>
+          <label for="profilePicInput">Profile Photo (Pick from device)</label>
           <input type="file" id="profilePicInput" accept="image/*" />
 
-          <button type="submit" class="btn-primary">✅ پروفائل محفوظ کریں</button>
+          <button type="submit" class="btn-primary">✅ Save Profile</button>
         </form>
       </section>
 
