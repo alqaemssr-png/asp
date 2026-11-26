@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alqaem-students-planner-v1';
+const CACHE_NAME = 'alqaem-students-planner-v2';
 const FILES = ['./', './index.html', './style.css', './app.js', './manifest.json'];
 
 self.addEventListener('install', (event) => {
